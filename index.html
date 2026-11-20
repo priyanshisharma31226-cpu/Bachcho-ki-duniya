@@ -125,41 +125,60 @@
       color: #ffffff;
     }
 
+    /* Full-frame visual card so an image/graphic is always clearly visible */
     .photo-box {
       width: 100%;
       aspect-ratio: 4 / 3;
       border-radius: 18px;
       overflow: hidden;
-      background: #fef3c7;
       margin-bottom: 12px;
       position: relative;
-    }
-    .photo-box img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-    .img-fallback {
-      width: 100%;
-      height: 100%;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      background: linear-gradient(135deg, #fef3c7, #fde68a);
-      padding: 16px;
+      padding: 18px;
       text-align: center;
+      border: 2px solid rgba(15, 23, 42, 0.08);
     }
-    .img-fallback strong {
-      font-size: 1.6rem;
-      color: #0f172a;
+    .bg-animals { background: linear-gradient(145deg, #fef3c7, #fcd34d); }
+    .bg-birds { background: linear-gradient(145deg, #e0f2fe, #7dd3fc); }
+    .bg-insects { background: linear-gradient(145deg, #dcfce7, #86efac); }
+    .bg-flowers { background: linear-gradient(145deg, #fce7f3, #f9a8d4); }
+
+    .badge-top {
+      background: rgba(15, 23, 42, 0.75);
+      color: #ffffff;
+      font-size: 0.75rem;
+      font-weight: 800;
+      padding: 4px 12px;
+      border-radius: 999px;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
     }
-    .img-fallback span {
-      font-size: 1.25rem;
-      color: #b45309;
-      margin-top: 6px;
+
+    .picture-frame {
+      width: 150px;
+      height: 150px;
+      border-radius: 24px;
+      background: rgba(255, 255, 255, 0.92);
+      box-shadow: 0 10px 24px rgba(15, 23, 42, 0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 4.5rem;
+      line-height: 1;
+      margin-bottom: 12px;
+    }
+
+    .hint-text {
+      font-size: 0.9rem;
       font-weight: 700;
+      color: #1e293b;
+      background: rgba(255, 255, 255, 0.72);
+      padding: 6px 14px;
+      border-radius: 999px;
     }
 
     .question-box {
@@ -277,60 +296,59 @@
       });
     }
 
-    // Reliable Wikimedia Commons Special:FilePath URLs (fast, public, no API key needed)
-    function wikiImg(fileName) {
-      return "https://commons.wikimedia.org/wiki/Special:FilePath/" + encodeURIComponent(fileName) + "?width=800";
-    }
-
+    // 40 Items: 10 Animals + 10 Birds + 10 Insects + 10 Flowers (zero external image failure)
     var items = [
       // 10 Animals
-      { category: "Animals", hindiName: "कुत्ता", engName: "Dog", img: wikiImg("Golden_retriever_eating_paws.jpg") },
-      { category: "Animals", hindiName: "बिल्ली", engName: "Cat", img: wikiImg("Cat_poster_1.jpg") },
-      { category: "Animals", hindiName: "गाय", engName: "Cow", img: wikiImg("Cow_female_black_white.jpg") },
-      { category: "Animals", hindiName: "शेर", engName: "Lion", img: wikiImg("Lion_waiting_in_Namibia.jpg") },
-      { category: "Animals", hindiName: "हाथी", engName: "Elephant", img: wikiImg("African_Bush_Elephant.jpg") },
-      { category: "Animals", hindiName: "घोड़ा", engName: "Horse", img: wikiImg("Red_mare.jpg") },
-      { category: "Animals", hindiName: "बाघ", engName: "Tiger", img: wikiImg("Walking_tiger_female.jpg") },
-      { category: "Animals", hindiName: "खरगोश", engName: "Rabbit", img: wikiImg("Oryctolagus_cuniculus_Rcdo.jpg") },
-      { category: "Animals", hindiName: "बंदर", engName: "Monkey", img: wikiImg("Macaca_fuscata_in_Arashiyama.jpg") },
-      { category: "Animals", hindiName: "हिरण", engName: "Deer", img: wikiImg("Cervus_elaphus_lucasi.jpg") },
+      { category: "Animals", hindiName: "कुत्ता", engName: "Dog", pic: "🐶" },
+      { category: "Animals", hindiName: "बिल्ली", engName: "Cat", pic: "🐱" },
+      { category: "Animals", hindiName: "गाय", engName: "Cow", pic: "🐄" },
+      { category: "Animals", hindiName: "शेर", engName: "Lion", pic: "🦁" },
+      { category: "Animals", hindiName: "हाथी", engName: "Elephant", pic: "🐘" },
+      { category: "Animals", hindiName: "घोड़ा", engName: "Horse", pic: "🐴" },
+      { category: "Animals", hindiName: "बाघ", engName: "Tiger", pic: "🐯" },
+      { category: "Animals", hindiName: "खरगोश", engName: "Rabbit", pic: "🐰" },
+      { category: "Animals", hindiName: "बंदर", engName: "Monkey", pic: "🐵" },
+      { category: "Animals", hindiName: "हिरण", engName: "Deer", pic: "🦌" },
 
       // 10 Common Birds
-      { category: "Common Birds", hindiName: "मोर", engName: "Peacock", img: wikiImg("Peacock_Plumage.jpg") },
-      { category: "Common Birds", hindiName: "गौरैया", engName: "Sparrow", img: wikiImg("House_sparrow_male_in_profile.jpg") },
-      { category: "Common Birds", hindiName: "कौआ", engName: "Crow", img: wikiImg("Corvus_brachyrhynchos_01.jpg") },
-      { category: "Common Birds", hindiName: "तोता", engName: "Parrot", img: wikiImg("Rose-ringed_parakeet_in_Hyderabad.jpg") },
-      { category: "Common Birds", hindiName: "कबूतर", engName: "Pigeon", img: wikiImg("Feral_pigeon_columba_livia.jpg") },
-      { category: "Common Birds", hindiName: "चील / बाज़", engName: "Eagle", img: wikiImg("Bald_Eagle_Portrait.jpg") },
-      { category: "Common Birds", hindiName: "उल्लू", engName: "Owl", img: wikiImg("Bubo_bubo_02.jpg") },
-      { category: "Common Birds", hindiName: "बतख", engName: "Duck", img: wikiImg("Anas_platyrhynchos_male_female_quadrat.jpg") },
-      { category: "Common Birds", hindiName: "हंस", engName: "Swan", img: wikiImg("Cygnus_olor_6_(B).jpg") },
-      { category: "Common Birds", hindiName: "किंगफ़िशर", engName: "Kingfisher", img: wikiImg("Common_Kingfisher_Alcedo_atthis.jpg") },
+      { category: "Common Birds", hindiName: "मोर", engName: "Peacock", pic: "🦚" },
+      { category: "Common Birds", hindiName: "गौरैया", engName: "Sparrow", pic: "🐦" },
+      { category: "Common Birds", hindiName: "कौआ", engName: "Crow", pic: "🐦‍⬛" },
+      { category: "Common Birds", hindiName: "तोता", engName: "Parrot", pic: "🦜" },
+      { category: "Common Birds", hindiName: "कबूतर", engName: "Pigeon", pic: "🕊️" },
+      { category: "Common Birds", hindiName: "चील / बाज़", engName: "Eagle", pic: "🦅" },
+      { category: "Common Birds", hindiName: "उल्लू", engName: "Owl", pic: "🦉" },
+      { category: "Common Birds", hindiName: "बतख", engName: "Duck", pic: "🦆" },
+      { category: "Common Birds", hindiName: "हंस", engName: "Swan", pic: "🦢" },
+      { category: "Common Birds", hindiName: "किंगफ़िशर", engName: "Kingfisher", pic: "🐦" },
 
       // 10 Insects
-      { category: "Insects", hindiName: "तितली", engName: "Butterfly", img: wikiImg("Monarch_Butterfly_Danaus_plexippus_Male_2669px.jpg") },
-      { category: "Insects", hindiName: "मधुमक्खी", engName: "Honeybee", img: wikiImg("Apis_mellifera_Western_honey_bee.jpg") },
-      { category: "Insects", hindiName: "चींटी", engName: "Ant", img: wikiImg("Formica_rufa_ant.jpg") },
-      { category: "Insects", hindiName: "लेडीबग", engName: "Ladybug", img: wikiImg("Coccinella_septempunctata_01.jpg") },
-      { category: "Insects", hindiName: "व्याध पतंग", engName: "Dragonfly", img: wikiImg("Dragonfly_in_flight.jpg") },
-      { category: "Insects", hindiName: "टिड्डा", engName: "Grasshopper", img: wikiImg("Caelifera_01.jpg") },
-      { category: "Insects", hindiName: "भृंग / बीटल", engName: "Beetle", img: wikiImg("Stag_beetle_male.jpg") },
-      { category: "Insects", hindiName: "पतंगा", engName: "Moth", img: wikiImg("Atlas_moth_female.jpg") },
-      { category: "Insects", hindiName: "मच्छर", engName: "Mosquito", img: wikiImg("Aedes_aegypti_CDC_1.jpg") },
-      { category: "Insects", hindiName: "मकड़ी", engName: "Spider", img: wikiImg("Araneus_diadematus_01.jpg") },
+      { category: "Insects", hindiName: "तितली", engName: "Butterfly", pic: "🦋" },
+      { category: "Insects", hindiName: "मधुमक्खी", engName: "Honeybee", pic: "🐝" },
+      { category: "Insects", hindiName: "चींटी", engName: "Ant", pic: "🐜" },
+      { category: "Insects", hindiName: "लेडीबग", engName: "Ladybug", pic: "🐞" },
+      { category: "Insects", hindiName: "व्याध पतंग", engName: "Dragonfly", pic: "🪲" },
+      { category: "Insects", hindiName: "टिड्डा", engName: "Grasshopper", pic: "🦗" },
+      { category: "Insects", hindiName: "भृंग / बीटल", engName: "Beetle", pic: "🪲" },
+      { category: "Insects", hindiName: "पतंगा", engName: "Moth", pic: "🦋" },
+      { category: "Insects", hindiName: "मच्छर", engName: "Mosquito", pic: "🦟" },
+      { category: "Insects", hindiName: "मकड़ी", engName: "Spider", pic: "🕷️" },
 
       // 10 Flowers
-      { category: "Flowers", hindiName: "गुलाब", engName: "Rose", img: wikiImg("Red_rose.jpg") },
-      { category: "Flowers", hindiName: "कमल", engName: "Lotus", img: wikiImg("Nelumbo_nucifera_open_flower_-_botanic_garden_bloemendaal.jpg") },
-      { category: "Flowers", hindiName: "सूरजमुखी", engName: "Sunflower", img: wikiImg("Helianthus_annuus_1409.jpg") },
-      { category: "Flowers", hindiName: "गेंदा", engName: "Marigold", img: wikiImg("Tagetes_patula_01.jpg") },
-      { category: "Flowers", hindiName: "चमेली", engName: "Jasmine", img: wikiImg("Jasminum_officinale_01.jpg") },
-      { category: "Flowers", hindiName: "गुड़हल", engName: "Hibiscus", img: wikiImg("Hibiscus_rosa-sinensis_flower.jpg") },
-      { category: "Flowers", hindiName: "लिली", engName: "Lily", img: wikiImg("Lilium_candidum_01.jpg") },
-      { category: "Flowers", hindiName: "ट्यूलिप", engName: "Tulip", img: wikiImg("Tulipa_gesneriana_01.jpg") },
-      { category: "Flowers", hindiName: "डेज़ी", engName: "Daisy", img: wikiImg("Bellis_perennis_white_(aka).jpg") },
-      { category: "Flowers", hindiName: "ऑर्किड", engName: "Orchid", img: wikiImg("Phalaenopsis_aphrodite_01.jpg") }
+      { category: "Flowers", hindiName: "गुलाब", engName: "Rose", pic: "🌹" },
+      { category: "Flowers", hindiName: "कमल", engName: "Lotus", pic: "🪷" },
+      { category: "Flowers", hindiName: "सूरजमुखी", engName: "Sunflower", pic: "🌻" },
+      { category: "Flowers", hindiName: "गेंदा", engName: "Marigold", pic: "🌼" },
+      { category: "Flowers", hindiName: "चमेली", engName: "Jasmine", pic: "🌸" },
+      { category: "Flowers", hindiName: "गुड़हल", engName: "Hibiscus", pic: "🌺" },
+      { category: "Flowers", hindiName: "लिली", engName: "Lily", pic: "🌷" },
+      { category: "Flowers", hindiName: "ट्यूलिप", engName: "Tulip", pic: "🌷" },
+      { category: "Flowers", hindiName: "डेज़ी", engName: "Daisy", pic: "🌼" },
+      { category: "Flowers", hindiName: "ऑर्किड", engName: "Orchid", pic: "orchids" }
     ];
+
+    // Fix Orchid icon cleanly
+    items[items.length - 1].pic = "🌸";
 
     var categories = ["All", "Animals", "Common Birds", "Insects", "Flowers"];
     var catLabels = {
@@ -453,14 +471,11 @@
       playVideoSequence();
     }
 
-    function handleImgError(imgEl, engName, hindiName) {
-      var box = imgEl.parentNode;
-      if (!box) return;
-      box.innerHTML =
-        '<div class="img-fallback">' +
-          '<strong>' + engName + '</strong>' +
-          '<span>' + hindiName + '</span>' +
-        '</div>';
+    function getStageBgClass(category) {
+      if (category === "Common Birds") return "bg-birds";
+      if (category === "Insects") return "bg-insects";
+      if (category === "Flowers") return "bg-flowers";
+      return "bg-animals";
     }
 
     function renderCard() {
@@ -476,8 +491,10 @@
             (autoVideoMode ? "▶ Auto Video: ON" : "⏸ Auto Video: OFF") +
           "</button>" +
         "</div>" +
-        '<div class="photo-box">' +
-          '<img src="' + item.img + '" alt="' + item.engName + '" onerror="handleImgError(this, \'' + item.engName.replace(/'/g, "\\'") + '\', \'' + item.hindiName.replace(/'/g, "\\'") + '\');" />' +
+        '<div class="photo-box ' + getStageBgClass(item.category) + '">' +
+          '<div class="badge-top">' + catLabels[item.category] + "</div>" +
+          '<div class="picture-frame">' + item.pic + "</div>" +
+          '<div class="hint-text">' + (showAns ? (item.hindiName + " • " + item.engName) : "ये क्या है प्यारे बच्चों?") + "</div>" +
         "</div>" +
         '<div class="question-box">' +
           '<div class="q-hindi">ये क्या है प्यारे बच्चों?</div>' +
