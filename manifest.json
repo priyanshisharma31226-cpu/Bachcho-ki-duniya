@@ -1,26 +1,12 @@
 {
-  "name": "बच्चों की दुनिया • What Is This?",
+  "name": "बच्चों की दुनिया • 40 Things",
   "short_name": "What Is This?",
-  "description": "Animals, Flowers, Insects & Common Birds learning app for kids with Hindi & English voice",
+  "description": "10 Animals, 10 Birds, 10 Insects & 10 Flowers learning app with Hindi & English voice",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
   "orientation": "portrait",
   "background_color": "#fffbeb",
   "theme_color": "#f59e0b",
-  "lang": "hi",
-  "icons": [
-    {
-      "src": "images/dog.jpg",
-      "sizes": "192x192",
-      "type": "image/jpeg",
-      "purpose": "any maskable"
-    },
-    {
-      "src": "images/butterfly.jpg",
-      "sizes": "512x512",
-      "type": "image/jpeg",
-      "purpose": "any maskable"
-    }
-  ]
+  "lang": "hi"
 }
