@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>बच्चों की दुनिया • 40 Things</title>
+  <title>बच्चों की दुनिया • Video Learning App</title>
   <link rel="manifest" href="manifest.json" />
   <meta name="theme-color" content="#f59e0b" />
   <meta name="mobile-web-app-capable" content="yes" />
@@ -35,38 +35,32 @@
     header {
       background: linear-gradient(135deg, #f59e0b, #ea580c);
       color: #ffffff;
-      padding: 14px 16px;
+      padding: 13px 16px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 10px;
     }
-    .title-wrap h1 {
-      font-size: 1.15rem;
-      line-height: 1.25;
-    }
-    .title-wrap p {
-      font-size: 0.78rem;
-      opacity: 0.95;
-      margin-top: 2px;
-    }
+    .title-wrap h1 { font-size: 1.12rem; line-height: 1.25; }
+    .title-wrap p { font-size: 0.76rem; opacity: 0.95; margin-top: 2px; }
     #installBtn {
       display: none;
       background: #ffffff;
       color: #ea580c;
       border: none;
-      padding: 8px 13px;
+      padding: 7px 12px;
       border-radius: 999px;
       font-family: inherit;
       font-weight: 700;
-      font-size: 0.82rem;
+      font-size: 0.8rem;
       cursor: pointer;
     }
+
     .cat-bar {
       display: flex;
       gap: 8px;
       overflow-x: auto;
-      padding: 12px 16px 4px;
+      padding: 10px 16px 4px;
       max-width: 680px;
       width: 100%;
       margin: 0 auto;
@@ -75,10 +69,10 @@
       border: 2px solid #fde68a;
       background: #ffffff;
       color: var(--text);
-      padding: 8px 14px;
+      padding: 7px 13px;
       border-radius: 999px;
       font-family: inherit;
-      font-size: 0.86rem;
+      font-size: 0.84rem;
       font-weight: 700;
       cursor: pointer;
       white-space: nowrap;
@@ -88,140 +82,106 @@
       border-color: var(--primary);
       color: #ffffff;
     }
+
     main {
       flex: 1;
       max-width: 680px;
       width: 100%;
       margin: 0 auto;
-      padding: 12px 16px 24px;
+      padding: 10px 16px 24px;
     }
+
     .flashcard {
       background: var(--card);
-      border-radius: 24px;
-      padding: 16px;
+      border-radius: 22px;
+      padding: 14px;
       box-shadow: 0 10px 25px rgba(15, 23, 42, 0.08);
       border: 3px solid #fef3c7;
     }
-    .counter {
-      text-align: center;
-      font-size: 0.85rem;
+
+    .top-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.82rem;
       color: var(--muted);
+      font-weight: 700;
       margin-bottom: 10px;
-      font-weight: 700;
     }
 
-    /* Pure HTML/CSS Visual Stage - Never blocked by image/data-URI filters */
-    .visual-stage {
-      width: 100%;
-      min-height: 230px;
-      border-radius: 18px;
-      padding: 20px 16px;
-      margin-bottom: 14px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      border: 2px solid rgba(15, 23, 42, 0.08);
-    }
-    .stage-animals { background: linear-gradient(135deg, #fef3c7, #fde68a); }
-    .stage-birds { background: linear-gradient(135deg, #e0f2fe, #bae6fd); }
-    .stage-insects { background: linear-gradient(135deg, #dcfce7, #bbf7d0); }
-    .stage-flowers { background: linear-gradient(135deg, #fce7f3, #fbcfe8); }
-
-    .cat-pill {
-      display: inline-block;
-      padding: 5px 14px;
+    .auto-toggle {
+      border: none;
       border-radius: 999px;
+      padding: 5px 12px;
+      font-family: inherit;
       font-size: 0.78rem;
-      font-weight: 800;
+      font-weight: 700;
+      cursor: pointer;
+      background: #e2e8f0;
+      color: #1e293b;
+    }
+    .auto-toggle.on {
+      background: #16a34a;
       color: #ffffff;
-      background: #ea580c;
-      margin-bottom: 12px;
-      letter-spacing: 0.4px;
     }
-    .stage-birds .cat-pill { background: #0284c7; }
-    .stage-insects .cat-pill { background: #16a34a; }
-    .stage-flowers .cat-pill { background: #db2777; }
 
-    .visual-circle {
-      width: 140px;
-      height: 140px;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.88);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
-      padding: 10px;
+    .photo-box {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      border-radius: 18px;
+      overflow: hidden;
+      background: #fef3c7;
+      margin-bottom: 12px;
+      position: relative;
     }
-    .vis-en {
-      font-size: 1.45rem;
-      font-weight: 800;
-      color: #0f172a;
-      line-height: 1.15;
-    }
-    .vis-hi {
-      font-size: 1.15rem;
-      font-weight: 700;
-      color: #334155;
-      margin-top: 6px;
-      line-height: 1.2;
-    }
-    .vis-sub {
-      margin-top: 12px;
-      font-size: 0.85rem;
-      font-weight: 700;
-      color: #475569;
+    .photo-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
     }
 
     .question-box {
       text-align: center;
       background: #fffbeb;
-      border-radius: 16px;
-      padding: 12px;
-      margin-bottom: 14px;
+      border-radius: 14px;
+      padding: 10px 12px;
+      margin-bottom: 12px;
     }
     .q-hindi {
-      font-size: 1.2rem;
+      font-size: 1.15rem;
       font-weight: 700;
       color: var(--primary-dark);
     }
-    .q-eng {
-      font-size: 1.05rem;
-      font-weight: 700;
-      color: var(--blue);
-      margin-top: 2px;
-    }
+
     .answer-box {
       display: none;
       text-align: center;
       background: #ecfdf5;
       border: 2px solid #a7f3d0;
-      border-radius: 16px;
-      padding: 14px;
-      margin-bottom: 14px;
+      border-radius: 14px;
+      padding: 12px;
+      margin-bottom: 12px;
     }
     .answer-box.show {
       display: block;
     }
     .a-hindi {
-      font-size: 1.32rem;
+      font-size: 1.28rem;
       font-weight: 700;
       color: #065f46;
     }
     .a-eng {
-      font-size: 1.15rem;
+      font-size: 1.12rem;
       font-weight: 700;
       color: #047857;
       margin-top: 2px;
     }
-    .action-grid {
+
+    .controls {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 10px;
-      margin-bottom: 12px;
     }
     .btn {
       border: none;
@@ -236,59 +196,39 @@
       justify-content: center;
       gap: 6px;
     }
-    .btn:active {
-      transform: scale(0.97);
-    }
-    .btn-ask {
+    .btn:active { transform: scale(0.97); }
+    .btn-replay {
       background: var(--blue);
       color: #ffffff;
-      grid-column: span 2;
-    }
-    .btn-ans-hi {
-      background: var(--secondary);
-      color: #ffffff;
-    }
-    .btn-ans-en {
-      background: #0ea5e9;
-      color: #ffffff;
-    }
-    .nav-row {
-      display: flex;
-      justify-content: space-between;
-      gap: 10px;
-    }
-    .btn-nav {
-      flex: 1;
-      background: #fef3c7;
-      color: var(--primary-dark);
     }
     .btn-next {
-      flex: 1;
       background: var(--primary);
       color: #ffffff;
     }
-    .voice-note {
+
+    .status-bar {
       text-align: center;
       font-size: 0.78rem;
       color: var(--muted);
       margin-top: 10px;
+      min-height: 20px;
     }
   </style>
 </head>
 <body>
   <header>
     <div class="title-wrap">
-      <h1>बच्चों की दुनिया • 40 Things</h1>
+      <h1>बच्चों की दुनिया • Video Mode</h1>
       <p>10 Animals • 10 Birds • 10 Insects • 10 Flowers</p>
     </div>
-    <button id="installBtn">📲 Install App</button>
+    <button id="installBtn">📲 Install</button>
   </header>
 
   <div class="cat-bar" id="catBar"></div>
 
   <main>
     <div class="flashcard" id="cardContainer"></div>
-    <div class="voice-note" id="voiceStatus">🔊 आवाज के लिए किसी भी बटन पर टैप करें</div>
+    <div class="status-bar" id="statusBar">🔊 किसी भी बटन पर टैप करें</div>
   </main>
 
   <script>
@@ -316,63 +256,88 @@
       });
     }
 
+    // Real photo helper via LoremFlickr / Wikimedia-friendly image endpoints with safe SVG fallback
+    function photoUrl(query, seed) {
+      return "https://loremflickr.com/800/600/" + encodeURIComponent(query) + "?lock=" + seed;
+    }
+
     var items = [
-      { category: "Animals", hindiName: "कुत्ता", engName: "Dog" },
-      { category: "Animals", hindiName: "बिल्ली", engName: "Cat" },
-      { category: "Animals", hindiName: "गाय", engName: "Cow" },
-      { category: "Animals", hindiName: "शेर", engName: "Lion" },
-      { category: "Animals", hindiName: "हाथी", engName: "Elephant" },
-      { category: "Animals", hindiName: "घोड़ा", engName: "Horse" },
-      { category: "Animals", hindiName: "बाघ", engName: "Tiger" },
-      { category: "Animals", hindiName: "खरगोश", engName: "Rabbit" },
-      { category: "Animals", hindiName: "बंदर", engName: "Monkey" },
-      { category: "Animals", hindiName: "हिरण", engName: "Deer" },
+      // 10 Animals
+      { category: "Animals", hindiName: "कुत्ता", engName: "Dog", img: photoUrl("dog,puppy", 11) },
+      { category: "Animals", hindiName: "बिल्ली", engName: "Cat", img: photoUrl("cat,kitten", 12) },
+      { category: "Animals", hindiName: "गाय", engName: "Cow", img: photoUrl("cow,calf", 13) },
+      { category: "Animals", hindiName: "शेर", engName: "Lion", img: photoUrl("lion", 14) },
+      { category: "Animals", hindiName: "हाथी", engName: "Elephant", img: photoUrl("elephant", 15) },
+      { category: "Animals", hindiName: "घोड़ा", engName: "Horse", img: photoUrl("horse", 16) },
+      { category: "Animals", hindiName: "बाघ", engName: "Tiger", img: photoUrl("tiger", 17) },
+      { category: "Animals", hindiName: "खरगोश", engName: "Rabbit", img: photoUrl("rabbit,bunny", 18) },
+      { category: "Animals", hindiName: "बंदर", engName: "Monkey", img: photoUrl("monkey", 19) },
+      { category: "Animals", hindiName: "हिरण", engName: "Deer", img: photoUrl("deer", 20) },
 
-      { category: "Common Birds", hindiName: "मोर", engName: "Peacock" },
-      { category: "Common Birds", hindiName: "गौरैया", engName: "Sparrow" },
-      { category: "Common Birds", hindiName: "कौआ", engName: "Crow" },
-      { category: "Common Birds", hindiName: "तोता", engName: "Parrot" },
-      { category: "Common Birds", hindiName: "कबूतर", engName: "Pigeon" },
-      { category: "Common Birds", hindiName: "चील / बाज़", engName: "Eagle" },
-      { category: "Common Birds", hindiName: "उल्लू", engName: "Owl" },
-      { category: "Common Birds", hindiName: "बतख", engName: "Duck" },
-      { category: "Common Birds", hindiName: "हंस", engName: "Swan" },
-      { category: "Common Birds", hindiName: "किंगफ़िशर", engName: "Kingfisher" },
+      // 10 Common Birds
+      { category: "Common Birds", hindiName: "मोर", engName: "Peacock", img: photoUrl("peacock", 21) },
+      { category: "Common Birds", hindiName: "गौरैया", engName: "Sparrow", img: photoUrl("sparrow,bird", 22) },
+      { category: "Common Birds", hindiName: "कौआ", engName: "Crow", img: photoUrl("crow,bird", 23) },
+      { category: "Common Birds", hindiName: "तोता", engName: "Parrot", img: photoUrl("parrot", 24) },
+      { category: "Common Birds", hindiName: "कबूतर", engName: "Pigeon", img: photoUrl("pigeon,dove", 25) },
+      { category: "Common Birds", hindiName: "चील / बाज़", engName: "Eagle", img: photoUrl("eagle,hawk", 26) },
+      { category: "Common Birds", hindiName: "उल्लू", engName: "Owl", img: photoUrl("owl", 27) },
+      { category: "Common Birds", hindiName: "बतख", engName: "Duck", img: photoUrl("duck", 28) },
+      { category: "Common Birds", hindiName: "हंस", engName: "Swan", img: photoUrl("swan", 29) },
+      { category: "Common Birds", hindiName: "किंगफ़िशर", engName: "Kingfisher", img: photoUrl("kingfisher,bird", 30) },
 
-      { category: "Insects", hindiName: "तितली", engName: "Butterfly" },
-      { category: "Insects", hindiName: "मधुमक्खी", engName: "Honeybee" },
-      { category: "Insects", hindiName: "चींटी", engName: "Ant" },
-      { category: "Insects", hindiName: "लेडीबग", engName: "Ladybug" },
-      { category: "Insects", hindiName: "व्याध पतंग", engName: "Dragonfly" },
-      { category: "Insects", hindiName: "टिड्डा", engName: "Grasshopper" },
-      { category: "Insects", hindiName: "भृंग / बीटल", engName: "Beetle" },
-      { category: "Insects", hindiName: "पतंगा", engName: "Moth" },
-      { category: "Insects", hindiName: "मच्छर", engName: "Mosquito" },
-      { category: "Insects", hindiName: "मकड़ी", engName: "Spider" },
+      // 10 Insects
+      { category: "Insects", hindiName: "तितली", engName: "Butterfly", img: photoUrl("butterfly", 31) },
+      { category: "Insects", hindiName: "मधुमक्खी", engName: "Honeybee", img: photoUrl("bee,honeybee", 32) },
+      { category: "Insects", hindiName: "चींटी", engName: "Ant", img: photoUrl("ant,insect", 33) },
+      { category: "Insects", hindiName: "लेडीबग", engName: "Ladybug", img: photoUrl("ladybug", 34) },
+      { category: "Insects", hindiName: "व्याध पतंग", engName: "Dragonfly", img: photoUrl("dragonfly", 35) },
+      { category: "Insects", hindiName: "टिड्डा", engName: "Grasshopper", img: photoUrl("grasshopper", 36) },
+      { category: "Insects", hindiName: "भृंग / बीटल", engName: "Beetle", img: photoUrl("beetle,insect", 37) },
+      { category: "Insects", hindiName: "पतंगा", engName: "Moth", img: photoUrl("moth,insect", 38) },
+      { category: "Insects", hindiName: "मच्छर", engName: "Mosquito", img: photoUrl("mosquito,insect", 39) },
+      { category: "Insects", hindiName: "मकड़ी", engName: "Spider", img: photoUrl("spider", 40) },
 
-      { category: "Flowers", hindiName: "गुलाब", engName: "Rose" },
-      { category: "Flowers", hindiName: "कमल", engName: "Lotus" },
-      { category: "Flowers", hindiName: "सूरजमुखी", engName: "Sunflower" },
-      { category: "Flowers", hindiName: "गेंदा", engName: "Marigold" },
-      { category: "Flowers", hindiName: "चमेली", engName: "Jasmine" },
-      { category: "Flowers", hindiName: "गुड़हल", engName: "Hibiscus" },
-      { category: "Flowers", hindiName: "लिली", engName: "Lily" },
-      { category: "Flowers", hindiName: "ट्यूलिप", engName: "Tulip" },
-      { category: "Flowers", hindiName: "डेज़ी", engName: "Daisy" },
-      { category: "Flowers", hindiName: "ऑर्किड", engName: "Orchid" }
+      // 10 Flowers
+      { category: "Flowers", hindiName: "गुलाब", engName: "Rose", img: photoUrl("rose,flower", 41) },
+      { category: "Flowers", hindiName: "कमल", engName: "Lotus", img: photoUrl("lotus,flower", 42) },
+      { category: "Flowers", hindiName: "सूरजमुखी", engName: "Sunflower", img: photoUrl("sunflower", 43) },
+      { category: "Flowers", hindiName: "गेंदा", engName: "Marigold", img: photoUrl("marigold,flower", 44) },
+      { category: "Flowers", hindiName: "चमेली", engName: "Jasmine", img: photoUrl("jasmine,flower", 45) },
+      { category: "Flowers", hindiName: "गुड़हल", engName: "Hibiscus", img: photoUrl("hibiscus,flower", 46) },
+      { category: "Flowers", hindiName: "लिली", engName: "Lily", img: photoUrl("lily,flower", 47) },
+      { category: "Flowers", hindiName: "ट्यूलिप", engName: "Tulip", img: photoUrl("tulip,flower", 48) },
+      { category: "Flowers", hindiName: "डेज़ी", engName: "Daisy", img: photoUrl("daisy,flower", 49) },
+      { category: "Flowers", hindiName: "ऑर्किड", engName: "Orchid", img: photoUrl("orchid,flower", 50) }
     ];
+
+    function fallbackSvg(item) {
+      var svg =
+        '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">' +
+          '<rect width="800" height="600" fill="#fef3c7"/>' +
+          '<rect x="40" y="40" width="720" height="520" rx="28" fill="#ffffff" stroke="#f59e0b" stroke-width="6"/>' +
+          '<text x="400" y="260" text-anchor="middle" fill="#b45309" font-family="sans-serif" font-size="44" font-weight="bold">' + item.engName + '</text>' +
+          '<text x="400" y="330" text-anchor="middle" fill="#1e293b" font-family="sans-serif" font-size="38" font-weight="bold">' + item.hindiName + '</text>' +
+        '</svg>';
+      return "data:image/svg+xml;charset=UTF-8," + encodeURIComponent(svg);
+    }
 
     var categories = ["All", "Animals", "Common Birds", "Insects", "Flowers"];
     var catLabels = {
-      "All": "सभी (40) • All",
-      "Animals": "जानवर (10) • Animals",
-      "Common Birds": "पक्षी (10) • Birds",
-      "Insects": "कीड़े (10) • Insects",
-      "Flowers": "फूल (10) • Flowers"
+      "All": "सभी (40)",
+      "Animals": "जानवर (10)",
+      "Common Birds": "पक्षी (10)",
+      "Insects": "कीड़े (10)",
+      "Flowers": "फूल (10)"
     };
+
     var activeCat = "All";
     var index = 0;
     var showAns = false;
+    var autoVideoMode = false;
+
+    var answerTimer = null;
+    var nextCardTimer = null;
 
     function getFilteredItems() {
       return activeCat === "All"
@@ -380,15 +345,20 @@
         : items.filter(function (i) { return i.category === activeCat; });
     }
 
-    function setVoiceStatus(msg) {
-      var el = document.getElementById("voiceStatus");
+    function clearTimers() {
+      if (answerTimer) { clearTimeout(answerTimer); answerTimer = null; }
+      if (nextCardTimer) { clearTimeout(nextCardTimer); nextCardTimer = null; }
+    }
+
+    function setStatus(msg) {
+      var el = document.getElementById("statusBar");
       if (el) el.textContent = msg;
     }
 
-    function speakSweetChildVoice(text, lang) {
+    function speak(text, lang, onDone) {
       try {
         if (!("speechSynthesis" in window)) {
-          setVoiceStatus("ℹ️ इस ब्राउज़र में स्पीच उपलब्ध नहीं है");
+          if (onDone) setTimeout(onDone, 1800);
           return;
         }
         window.speechSynthesis.cancel();
@@ -397,37 +367,57 @@
         utter.pitch = 1.45;
         utter.rate = 0.92;
         var voices = window.speechSynthesis.getVoices ? window.speechSynthesis.getVoices() : [];
-        var prefix = (lang || "en").slice(0, 2).toLowerCase();
+        var prefix = (lang || "hi").slice(0, 2).toLowerCase();
         for (var i = 0; i < voices.length; i++) {
           if (voices[i].lang && voices[i].lang.toLowerCase().indexOf(prefix) === 0) {
             utter.voice = voices[i];
             break;
           }
         }
-        utter.onstart = function () { setVoiceStatus("🔊 बोल रहा है: " + text); };
-        utter.onend = function () { setVoiceStatus("🔊 किसी भी बटन पर टैप करके सुनें"); };
-        utter.onerror = function () { setVoiceStatus("ℹ️ फोन में Hindi/English TTS voice ऑन रखें"); };
+        utter.onend = function () { if (onDone) onDone(); };
+        utter.onerror = function () { if (onDone) onDone(); };
         window.speechSynthesis.speak(utter);
       } catch (e) {
-        setVoiceStatus("ℹ️ आवाज चलाने में दिक्कत आई");
+        if (onDone) setTimeout(onDone, 1800);
       }
     }
 
-    function askQuestionVoice() {
-      speakSweetChildVoice("बच्चों यह क्या है?", "hi-IN");
-      setTimeout(function () {
-        speakSweetChildVoice("What is this?", "en-US");
-      }, 1500);
+    function playVideoSequence() {
+      clearTimers();
+      showAns = false;
+      renderCard();
+
+      var list = getFilteredItems();
+      var item = list[index] || items[0];
+
+      // 1. Ask question right away
+      setStatus("🔊 सवाल: ये क्या है प्यारे बच्चों?");
+      speak("ये क्या है प्यारे बच्चों?", "hi-IN");
+
+      // 2. After 2.5 seconds, automatically reveal answer & speak Hindi + English
+      answerTimer = setTimeout(function () {
+        showAns = true;
+        renderCard();
+        setStatus("🔊 जवाब: ये " + item.hindiName + " है, " + item.engName);
+        speak("ये " + item.hindiName + " है, " + item.engName, "hi-IN", function () {
+          if (autoVideoMode) {
+            nextCardTimer = setTimeout(function () {
+              stepNext(false);
+            }, 2200);
+          }
+        });
+      }, 2500);
     }
 
-    function revealAnswer(mode) {
-      var item = getFilteredItems()[index];
-      showAns = true;
+    function toggleAutoVideo() {
+      autoVideoMode = !autoVideoMode;
       renderCard();
-      if (mode === "hi") {
-        speakSweetChildVoice("यह " + item.hindiName + " है!", "hi-IN");
+      if (autoVideoMode) {
+        setStatus("▶ Auto Video Mode ON: कार्ड अपने आप बदलते रहेंगे");
+        playVideoSequence();
       } else {
-        speakSweetChildVoice("This is a " + item.engName + "!", "en-US");
+        clearTimers();
+        setStatus("⏸ Auto Video Mode OFF: Next दबाकर बदलें");
       }
     }
 
@@ -446,31 +436,13 @@
     function selectCat(cat) {
       activeCat = cat;
       index = 0;
-      showAns = false;
-      renderCategories();
-      renderCard();
+      playVideoSequence();
     }
 
-    function nextCard() {
-      index = (index + 1) % getFilteredItems().length;
-      showAns = false;
-      renderCard();
-      askQuestionVoice();
-    }
-
-    function prevCard() {
-      var len = getFilteredItems().length;
-      index = (index - 1 + len) % len;
-      showAns = false;
-      renderCard();
-      askQuestionVoice();
-    }
-
-    function getStageClass(category) {
-      if (category === "Common Birds") return "stage-birds";
-      if (category === "Insects") return "stage-insects";
-      if (category === "Flowers") return "stage-flowers";
-      return "stage-animals";
+    function stepNext() {
+      var list = getFilteredItems();
+      index = (index + 1) % list.length;
+      playVideoSequence();
     }
 
     function renderCard() {
@@ -479,32 +451,28 @@
       var container = document.getElementById("cardContainer");
       if (!container) return;
 
+      var fb = fallbackSvg(item).replace(/'/g, "&#39;");
+
       container.innerHTML =
-        '<div class="counter">' + catLabels[item.category] + " • " + (index + 1) + " / " + list.length + "</div>" +
-        '<div class="visual-stage ' + getStageClass(item.category) + '">' +
-          '<div class="cat-pill">' + catLabels[item.category] + "</div>" +
-          '<div class="visual-circle">' +
-            '<div class="vis-en">' + item.engName + "</div>" +
-            '<div class="vis-hi">' + item.hindiName + "</div>" +
-          "</div>" +
-          '<div class="vis-sub">जवाब देखने के लिए नीचे हिंदी या English बटन दबाएं</div>' +
+        '<div class="top-meta">' +
+          '<span>' + catLabels[item.category] + " • " + (index + 1) + " / " + list.length + "</span>" +
+          '<button class="auto-toggle ' + (autoVideoMode ? "on" : "") + '" onclick="toggleAutoVideo()">' +
+            (autoVideoMode ? "▶ Auto Video: ON" : "⏸ Auto Video: OFF") +
+          "</button>" +
+        "</div>" +
+        '<div class="photo-box">' +
+          '<img src="' + item.img + '" alt="' + item.engName + '" onerror="this.onerror=null;this.src=\'' + fb + '\';" />' +
         "</div>" +
         '<div class="question-box">' +
-          '<div class="q-hindi">बच्चों यह क्या है?</div>' +
-          '<div class="q-eng">What is this?</div>' +
+          '<div class="q-hindi">ये क्या है प्यारे बच्चों?</div>' +
         "</div>" +
         '<div class="answer-box ' + (showAns ? "show" : "") + '">' +
-          '<div class="a-hindi">यह ' + item.hindiName + " है</div>" +
-          '<div class="a-eng">This is a ' + item.engName + "</div>" +
+          '<div class="a-hindi">ये ' + item.hindiName + " है</div>" +
+          '<div class="a-eng">' + item.engName + "</div>" +
         "</div>" +
-        '<div class="action-grid">' +
-          '<button class="btn btn-ask" onclick="askQuestionVoice()">🔊 सवाल सुनें (Ask Question)</button>' +
-          '<button class="btn btn-ans-hi" onclick="revealAnswer(\'hi\')">🗣️ जवाब (हिंदी)</button>' +
-          '<button class="btn btn-ans-en" onclick="revealAnswer(\'en\')">🗣️ Answer (English)</button>' +
-        "</div>" +
-        '<div class="nav-row">' +
-          '<button class="btn btn-nav" onclick="prevCard()">← पिछला</button>' +
-          '<button class="btn btn-next" onclick="nextCard()">अगला →</button>' +
+        '<div class="controls">' +
+          '<button class="btn btn-replay" onclick="playVideoSequence()">🔊 फिर से सुनें</button>' +
+          '<button class="btn btn-next" onclick="stepNext()">Next →</button>' +
         "</div>";
     }
 
