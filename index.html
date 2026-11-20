@@ -9,65 +9,217 @@
   <meta name="mobile-web-app-capable" content="yes" />
   <style>
     :root {
-      --bg: #fffbeb; --card: #ffffff; --primary: #f59e0b; --primary-dark: #b45309;
-      --secondary: #10b981; --blue: #2563eb; --text: #1e293b; --muted: #64748b;
+      --bg: #fffbeb;
+      --card: #ffffff;
+      --primary: #f59e0b;
+      --primary-dark: #b45309;
+      --secondary: #10b981;
+      --blue: #2563eb;
+      --text: #1e293b;
+      --muted: #64748b;
     }
-    * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
     body {
       font-family: system-ui, -apple-system, "Noto Sans Devanagari", Arial, sans-serif;
-      background: var(--bg); color: var(--text); min-height: 100vh; display: flex; flex-direction: column;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
     }
     header {
       background: linear-gradient(135deg, #f59e0b, #ea580c);
-      color: #fff; padding: 14px 16px; display: flex; align-items: center; justify-content: space-between; gap: 10px;
+      color: #ffffff;
+      padding: 14px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
     }
-    .title-wrap h1 { font-size: 1.15rem; line-height: 1.25; }
-    .title-wrap p { font-size: 0.78rem; opacity: 0.95; margin-top: 2px; }
+    .title-wrap h1 {
+      font-size: 1.15rem;
+      line-height: 1.25;
+    }
+    .title-wrap p {
+      font-size: 0.78rem;
+      opacity: 0.95;
+      margin-top: 2px;
+    }
     #installBtn {
-      display: none; background: #fff; color: #ea580c; border: none; padding: 8px 13px;
-      border-radius: 999px; font-family: inherit; font-weight: 700; font-size: 0.82rem; cursor: pointer;
+      display: none;
+      background: #ffffff;
+      color: #ea580c;
+      border: none;
+      padding: 8px 13px;
+      border-radius: 999px;
+      font-family: inherit;
+      font-weight: 700;
+      font-size: 0.82rem;
+      cursor: pointer;
     }
     .cat-bar {
-      display: flex; gap: 8px; overflow-x: auto; padding: 12px 16px 4px; max-width: 680px; width: 100%; margin: 0 auto;
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding: 12px 16px 4px;
+      max-width: 680px;
+      width: 100%;
+      margin: 0 auto;
     }
     .cat-btn {
-      border: 2px solid #fde68a; background: #fff; color: var(--text); padding: 8px 14px;
-      border-radius: 999px; font-family: inherit; font-size: 0.86rem; font-weight: 700; cursor: pointer; white-space: nowrap;
+      border: 2px solid #fde68a;
+      background: #ffffff;
+      color: var(--text);
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-family: inherit;
+      font-size: 0.86rem;
+      font-weight: 700;
+      cursor: pointer;
+      white-space: nowrap;
     }
-    .cat-btn.active { background: var(--primary); border-color: var(--primary); color: #fff; }
-    main { flex: 1; max-width: 680px; width: 100%; margin: 0 auto; padding: 12px 16px 24px; }
+    .cat-btn.active {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: #ffffff;
+    }
+    main {
+      flex: 1;
+      max-width: 680px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 12px 16px 24px;
+    }
     .flashcard {
-      background: var(--card); border-radius: 24px; padding: 16px;
-      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.08); border: 3px solid #fef3c7;
+      background: var(--card);
+      border-radius: 24px;
+      padding: 16px;
+      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.08);
+      border: 3px solid #fef3c7;
     }
-    .counter { text-align: center; font-size: 0.85rem; color: var(--muted); margin-bottom: 10px; font-weight: 700; }
+    .counter {
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
     .photo-box {
-      width: 100%; aspect-ratio: 4 / 3; border-radius: 18px; overflow: hidden; background: #fef3c7; margin-bottom: 14px;
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      border-radius: 18px;
+      overflow: hidden;
+      background: #fef3c7;
+      margin-bottom: 14px;
     }
-    .photo-box img { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .question-box { text-align: center; background: #fffbeb; border-radius: 16px; padding: 12px; margin-bottom: 14px; }
-    .q-hindi { font-size: 1.2rem; font-weight: 700; color: var(--primary-dark); }
-    .q-eng { font-size: 1.05rem; font-weight: 700; color: var(--blue); margin-top: 2px; }
+    .photo-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .question-box {
+      text-align: center;
+      background: #fffbeb;
+      border-radius: 16px;
+      padding: 12px;
+      margin-bottom: 14px;
+    }
+    .q-hindi {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--primary-dark);
+    }
+    .q-eng {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--blue);
+      margin-top: 2px;
+    }
     .answer-box {
-      display: none; text-align: center; background: #ecfdf5; border: 2px solid #a7f3d0;
-      border-radius: 16px; padding: 14px; margin-bottom: 14px;
+      display: none;
+      text-align: center;
+      background: #ecfdf5;
+      border: 2px solid #a7f3d0;
+      border-radius: 16px;
+      padding: 14px;
+      margin-bottom: 14px;
     }
-    .answer-box.show { display: block; }
-    .a-hindi { font-size: 1.32rem; font-weight: 700; color: #065f46; }
-    .a-eng { font-size: 1.15rem; font-weight: 700; color: #047857; margin-top: 2px; }
-    .action-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 12px; }
+    .answer-box.show {
+      display: block;
+    }
+    .a-hindi {
+      font-size: 1.32rem;
+      font-weight: 700;
+      color: #065f46;
+    }
+    .a-eng {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #047857;
+      margin-top: 2px;
+    }
+    .action-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
     .btn {
-      border: none; border-radius: 14px; padding: 12px 14px; font-family: inherit;
-      font-size: 0.95rem; font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;
+      border: none;
+      border-radius: 14px;
+      padding: 12px 14px;
+      font-family: inherit;
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
     }
-    .btn:active { transform: scale(0.97); }
-    .btn-ask { background: var(--blue); color: #fff; grid-column: span 2; }
-    .btn-ans-hi { background: var(--secondary); color: #fff; }
-    .btn-ans-en { background: #0ea5e9; color: #fff; }
-    .nav-row { display: flex; justify-content: space-between; gap: 10px; }
-    .btn-nav { flex: 1; background: #fef3c7; color: var(--primary-dark); }
-    .btn-next { flex: 1; background: var(--primary); color: #fff; }
-    .voice-note { text-align: center; font-size: 0.76rem; color: var(--muted); margin-top: 10px; }
+    .btn:active {
+      transform: scale(0.97);
+    }
+    .btn-ask {
+      background: var(--blue);
+      color: #ffffff;
+      grid-column: span 2;
+    }
+    .btn-ans-hi {
+      background: var(--secondary);
+      color: #ffffff;
+    }
+    .btn-ans-en {
+      background: #0ea5e9;
+      color: #ffffff;
+    }
+    .nav-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+    }
+    .btn-nav {
+      flex: 1;
+      background: #fef3c7;
+      color: var(--primary-dark);
+    }
+    .btn-next {
+      flex: 1;
+      background: var(--primary);
+      color: #ffffff;
+    }
+    .voice-note {
+      text-align: center;
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-top: 10px;
+    }
   </style>
 </head>
 <body>
@@ -82,32 +234,30 @@
   <div class="cat-bar" id="catBar"></div>
 
   <main>
-    <div class="flashcard" id="cardContainer">
-      <div class="counter">Loading cards...</div>
-    </div>
+    <div class="flashcard" id="cardContainer"></div>
     <div class="voice-note" id="voiceStatus">🔊 आवाज के लिए किसी भी बटन पर टैप करें</div>
   </main>
 
   <script>
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', function () {
-        navigator.serviceWorker.register('./sw.js').catch(function () {});
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", function () {
+        navigator.serviceWorker.register("./sw.js").catch(function () {});
       });
     }
 
     var deferredPrompt = null;
-    var installBtn = document.getElementById('installBtn');
-    window.addEventListener('beforeinstallprompt', function (e) {
+    var installBtn = document.getElementById("installBtn");
+    window.addEventListener("beforeinstallprompt", function (e) {
       e.preventDefault();
       deferredPrompt = e;
-      installBtn.style.display = 'inline-block';
+      if (installBtn) installBtn.style.display = "inline-block";
     });
     if (installBtn) {
-      installBtn.addEventListener('click', function () {
+      installBtn.addEventListener("click", function () {
         if (!deferredPrompt) return;
         deferredPrompt.prompt();
         deferredPrompt.userChoice.finally(function () {
-          installBtn.style.display = 'none';
+          installBtn.style.display = "none";
           deferredPrompt = null;
         });
       });
@@ -124,6 +274,7 @@
       { category: "Animals", hindiName: "खरगोश", engName: "Rabbit" },
       { category: "Animals", hindiName: "बंदर", engName: "Monkey" },
       { category: "Animals", hindiName: "हिरण", engName: "Deer" },
+
       { category: "Common Birds", hindiName: "मोर", engName: "Peacock" },
       { category: "Common Birds", hindiName: "गौरैया", engName: "Sparrow" },
       { category: "Common Birds", hindiName: "कौआ", engName: "Crow" },
@@ -134,6 +285,7 @@
       { category: "Common Birds", hindiName: "बतख", engName: "Duck" },
       { category: "Common Birds", hindiName: "हंस", engName: "Swan" },
       { category: "Common Birds", hindiName: "किंगफ़िशर", engName: "Kingfisher" },
+
       { category: "Insects", hindiName: "तितली", engName: "Butterfly" },
       { category: "Insects", hindiName: "मधुमक्खी", engName: "Honeybee" },
       { category: "Insects", hindiName: "चींटी", engName: "Ant" },
@@ -144,6 +296,7 @@
       { category: "Insects", hindiName: "पतंगा", engName: "Moth" },
       { category: "Insects", hindiName: "मच्छर", engName: "Mosquito" },
       { category: "Insects", hindiName: "मकड़ी", engName: "Spider" },
+
       { category: "Flowers", hindiName: "गुलाब", engName: "Rose" },
       { category: "Flowers", hindiName: "कमल", engName: "Lotus" },
       { category: "Flowers", hindiName: "सूरजमुखी", engName: "Sunflower" },
@@ -156,57 +309,39 @@
       { category: "Flowers", hindiName: "ऑर्किड", engName: "Orchid" }
     ];
 
+    function escapeXml(str) {
+      return String(str)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;");
+    }
+
     function buildAutoImage(item) {
-      try {
-        var canvas = document.createElement('canvas');
-        canvas.width = 800;
-        canvas.height = 600;
-        var ctx = canvas.getContext('2d');
-        if (!ctx) return '';
-
-        var themes = {
-          "Animals": { bg1: "#fef3c7", bg2: "#fde68a", badge: "#d97706", tag: "ANIMAL • जानवर" },
-          "Common Birds": { bg1: "#e0f2fe", bg2: "#bae6fd", badge: "#0284c7", tag: "BIRD • पक्षी" },
-          "Insects": { bg1: "#dcfce7", bg2: "#bbf7d0", badge: "#16a34a", tag: "INSECT • कीड़ा" },
-          "Flowers": { bg1: "#fce7f3", bg2: "#fbcfe8", badge: "#db2777", tag: "FLOWER • फूल" }
-        };
-        var th = themes[item.category] || themes["Animals"];
-
-        var grad = ctx.createLinearGradient(0, 0, 800, 600);
-        grad.addColorStop(0, th.bg1);
-        grad.addColorStop(1, th.bg2);
-        ctx.fillStyle = grad;
-        ctx.fillRect(0, 0, 800, 600);
-
-        ctx.fillStyle = "rgba(255,255,255,0.72)";
-        ctx.beginPath();
-        ctx.arc(400, 285, 185, 0, Math.PI * 2);
-        ctx.fill();
-
-        ctx.fillStyle = th.badge;
-        ctx.fillRect(230, 42, 340, 46);
-
-        ctx.fillStyle = "#ffffff";
-        ctx.font = "bold 22px sans-serif";
-        ctx.textAlign = "center";
-        ctx.fillText(th.tag, 400, 73);
-
-        ctx.fillStyle = "#0f172a";
-        ctx.font = "bold 56px sans-serif";
-        ctx.fillText(item.engName, 400, 268);
-
-        ctx.fillStyle = "#334155";
-        ctx.font = "bold 44px sans-serif";
-        ctx.fillText(item.hindiName, 400, 335);
-
-        ctx.fillStyle = "#475569";
-        ctx.font = "22px sans-serif";
-        ctx.fillText("बच्चों यह क्या है? • What is this?", 400, 525);
-
-        return canvas.toDataURL("image/png");
-      } catch (err) {
-        return '';
-      }
+      var themes = {
+        "Animals": { bg1: "#fef3c7", bg2: "#fde68a", badge: "#d97706", tag: "ANIMAL • जानवर" },
+        "Common Birds": { bg1: "#e0f2fe", bg2: "#bae6fd", badge: "#0284c7", tag: "BIRD • पक्षी" },
+        "Insects": { bg1: "#dcfce7", bg2: "#bbf7d0", badge: "#16a34a", tag: "INSECT • कीड़ा" },
+        "Flowers": { bg1: "#fce7f3", bg2: "#fbcfe8", badge: "#db2777", tag: "FLOWER • फूल" }
+      };
+      var th = themes[item.category] || themes["Animals"];
+      var svg =
+        '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">' +
+          '<defs>' +
+            '<linearGradient id="g" x1="0" y1="0" x2="1" y2="1">' +
+              '<stop offset="0%" stop-color="' + th.bg1 + '"/>' +
+              '<stop offset="100%" stop-color="' + th.bg2 + '"/>' +
+            '</linearGradient>' +
+          '</defs>' +
+          '<rect width="800" height="600" fill="url(#g)"/>' +
+          '<circle cx="400" cy="285" r="185" fill="rgba(255,255,255,0.75)"/>' +
+          '<rect x="235" y="42" width="330" height="46" rx="23" fill="' + th.badge + '"/>' +
+          '<text x="400" y="72" text-anchor="middle" fill="#ffffff" font-family="sans-serif" font-size="22" font-weight="bold">' + escapeXml(th.tag) + '</text>' +
+          '<text x="400" y="268" text-anchor="middle" fill="#0f172a" font-family="sans-serif" font-size="56" font-weight="bold">' + escapeXml(item.engName) + '</text>' +
+          '<text x="400" y="335" text-anchor="middle" fill="#334155" font-family="sans-serif" font-size="44" font-weight="bold">' + escapeXml(item.hindiName) + '</text>' +
+          '<text x="400" y="525" text-anchor="middle" fill="#475569" font-family="sans-serif" font-size="22">बच्चों यह क्या है? • What is this?</text>' +
+        '</svg>';
+      return "data:image/svg+xml;charset=UTF-8," + encodeURIComponent(svg);
     }
 
     var categories = ["All", "Animals", "Common Birds", "Insects", "Flowers"];
@@ -222,18 +357,20 @@
     var showAns = false;
 
     function getFilteredItems() {
-      return activeCat === "All" ? items : items.filter(function (i) { return i.category === activeCat; });
+      return activeCat === "All"
+        ? items
+        : items.filter(function (i) { return i.category === activeCat; });
     }
 
     function setVoiceStatus(msg) {
-      var el = document.getElementById('voiceStatus');
+      var el = document.getElementById("voiceStatus");
       if (el) el.textContent = msg;
     }
 
     function speakSweetChildVoice(text, lang) {
       try {
-        if (!('speechSynthesis' in window)) {
-          setVoiceStatus("ℹ️ इस ब्राउज़र में स्पीच फीचर उपलब्ध नहीं है");
+        if (!("speechSynthesis" in window)) {
+          setVoiceStatus("ℹ️ इस ब्राउज़र में स्पीच उपलब्ध नहीं है");
           return;
         }
         window.speechSynthesis.cancel();
@@ -242,21 +379,19 @@
         utter.pitch = 1.45;
         utter.rate = 0.92;
         var voices = window.speechSynthesis.getVoices ? window.speechSynthesis.getVoices() : [];
-        var prefix = (lang || 'en').slice(0, 2).toLowerCase();
-        var preferred = null;
+        var prefix = (lang || "en").slice(0, 2).toLowerCase();
         for (var i = 0; i < voices.length; i++) {
           if (voices[i].lang && voices[i].lang.toLowerCase().indexOf(prefix) === 0) {
-            preferred = voices[i];
+            utter.voice = voices[i];
             break;
           }
         }
-        if (preferred) utter.voice = preferred;
         utter.onstart = function () { setVoiceStatus("🔊 बोल रहा है: " + text); };
         utter.onend = function () { setVoiceStatus("🔊 किसी भी बटन पर टैप करके सुनें"); };
-        utter.onerror = function () { setVoiceStatus("ℹ️ फोन के Text-to-Speech (TTS) में Hindi/English voice चेक करें"); };
+        utter.onerror = function () { setVoiceStatus("ℹ️ फोन में Hindi/English TTS voice ऑन रखें"); };
         window.speechSynthesis.speak(utter);
       } catch (e) {
-        setVoiceStatus("ℹ️ ऑडियो प्ले करने में दिक्कत आई");
+        setVoiceStatus("ℹ️ आवाज चलाने में दिक्कत आई");
       }
     }
 
@@ -268,11 +403,10 @@
     }
 
     function revealAnswer(mode) {
-      var list = getFilteredItems();
-      var item = list[index];
+      var item = getFilteredItems()[index];
       showAns = true;
       renderCard();
-      if (mode === 'hi') {
+      if (mode === "hi") {
         speakSweetChildVoice("यह " + item.hindiName + " है!", "hi-IN");
       } else {
         speakSweetChildVoice("This is a " + item.engName + "!", "en-US");
@@ -280,13 +414,13 @@
     }
 
     function renderCategories() {
-      var bar = document.getElementById('catBar');
+      var bar = document.getElementById("catBar");
       if (!bar) return;
       var html = "";
       for (var i = 0; i < categories.length; i++) {
         var cat = categories[i];
         var cls = activeCat === cat ? "cat-btn active" : "cat-btn";
-        html += '<button class="' + cls + '" onclick="selectCat(\'' + cat + '\')">' + catLabels[cat] + '</button>';
+        html += '<button class="' + cls + '" onclick="selectCat(\'' + cat + '\')">' + catLabels[cat] + "</button>";
       }
       bar.innerHTML = html;
     }
@@ -300,16 +434,15 @@
     }
 
     function nextCard() {
-      var list = getFilteredItems();
-      index = (index + 1) % list.length;
+      index = (index + 1) % getFilteredItems().length;
       showAns = false;
       renderCard();
       askQuestionVoice();
     }
 
     function prevCard() {
-      var list = getFilteredItems();
-      index = (index - 1 + list.length) % list.length;
+      var len = getFilteredItems().length;
+      index = (index - 1 + len) % len;
       showAns = false;
       renderCard();
       askQuestionVoice();
@@ -321,37 +454,33 @@
       if (!item.autoImg) {
         item.autoImg = buildAutoImage(item);
       }
-      var container = document.getElementById('cardContainer');
+      var container = document.getElementById("cardContainer");
       if (!container) return;
 
-      var imgTag = item.autoImg
-        ? '<img src="' + item.autoImg + '" alt="' + item.engName + '" />'
-        : '<div style="height:100%;display:flex;align-items:center;justify-content:center;font-size:1.5rem;font-weight:700;">' + item.engName + ' • ' + item.hindiName + '</div>';
-
       container.innerHTML =
-        '<div class="counter">' + catLabels[item.category] + ' • ' + (index + 1) + ' / ' + list.length + '</div>' +
-        '<div class="photo-box">' + imgTag + '</div>' +
+        '<div class="counter">' + catLabels[item.category] + " • " + (index + 1) + " / " + list.length + "</div>" +
+        '<div class="photo-box"><img src="' + item.autoImg + '" alt="' + item.engName + '" /></div>' +
         '<div class="question-box">' +
           '<div class="q-hindi">बच्चों यह क्या है?</div>' +
           '<div class="q-eng">What is this?</div>' +
-        '</div>' +
-        '<div class="answer-box ' + (showAns ? 'show' : '') + '">' +
-          '<div class="a-hindi">यह ' + item.hindiName + ' है</div>' +
-          '<div class="a-eng">This is a ' + item.engName + '</div>' +
-        '</div>' +
+        "</div>" +
+        '<div class="answer-box ' + (showAns ? "show" : "") + '">' +
+          '<div class="a-hindi">यह ' + item.hindiName + " है</div>" +
+          '<div class="a-eng">This is a ' + item.engName + "</div>" +
+        "</div>" +
         '<div class="action-grid">' +
           '<button class="btn btn-ask" onclick="askQuestionVoice()">🔊 सवाल सुनें (Ask Question)</button>' +
           '<button class="btn btn-ans-hi" onclick="revealAnswer(\'hi\')">🗣️ जवाब (हिंदी)</button>' +
           '<button class="btn btn-ans-en" onclick="revealAnswer(\'en\')">🗣️ Answer (English)</button>' +
-        '</div>' +
+        "</div>" +
         '<div class="nav-row">' +
           '<button class="btn btn-nav" onclick="prevCard()">← पिछला</button>' +
           '<button class="btn btn-next" onclick="nextCard()">अगला →</button>' +
-        '</div>';
+        "</div>";
     }
 
     if (window.speechSynthesis && window.speechSynthesis.addEventListener) {
-      window.speechSynthesis.addEventListener('voiceschanged', function () {});
+      window.speechSynthesis.addEventListener("voiceschanged", function () {});
     }
 
     renderCategories();
