@@ -1,13 +1,5 @@
-const CACHE_NAME = 'kids-nature-what-is-this-v1';
-const ASSETS = [
-  './',
-  './index.html',
-  './manifest.json',
-  './images/dog.jpg',
-  './images/rose.jpg',
-  './images/butterfly.jpg',
-  './images/bird.jpg'
-];
+const CACHE_NAME = 'bachcho-duniya-40-v1';
+const ASSETS = ['./', './index.html', './manifest.json'];
 
 self.addEventListener('install', (e) => {
   e.waitUntil(caches.open(CACHE_NAME).then((c) => c.addAll(ASSETS)));
@@ -25,7 +17,5 @@ self.addEventListener('activate', (e) => {
 
 self.addEventListener('fetch', (e) => {
   if (e.request.method !== 'GET') return;
-  e.respondWith(
-    caches.match(e.request).then((cached) => cached || fetch(e.request))
-  );
+  e.respondWith(caches.match(e.request).then((cached) => cached || fetch(e.request)));
 });
