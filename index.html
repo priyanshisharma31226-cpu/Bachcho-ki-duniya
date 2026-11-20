@@ -3,7 +3,7 @@
 <html lang="hi">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#673ab7">
 <title>Bachcho Ki Duniya</title>
 
@@ -12,227 +12,179 @@
 body{
  margin:0;
  font-family:Arial,sans-serif;
- background:linear-gradient(135deg,#e1f5fe,#fce4ec);
  text-align:center;
+ background:linear-gradient(135deg,#e1f5fe,#fce4ec);
  color:#333;
 }
 header{
- background:#673ab7;
- color:white;
+ background:#673ab7;color:white;
  padding:22px 10px;
 }
 header h1{margin:0;font-size:27px}
-header p{margin:8px 0 0}
+header p{margin:8px}
 .categories{
- display:flex;
- flex-wrap:wrap;
- justify-content:center;
- gap:9px;
+ display:flex;flex-wrap:wrap;
+ justify-content:center;gap:8px;
  padding:15px 8px;
 }
 button{
- border:0;
- border-radius:25px;
- padding:12px 17px;
- font-size:15px;
- font-weight:bold;
+ border:0;border-radius:25px;
+ padding:12px 16px;
+ font-size:15px;font-weight:bold;
  cursor:pointer;
 }
-.cat{background:#fff;color:#673ab7}
+.cat{background:white;color:#673ab7}
 .cat.active{background:#ff9800;color:white}
 .card{
- background:white;
- width:90%;
- max-width:430px;
- margin:12px auto;
- padding:15px;
- border-radius:22px;
+ width:92%;max-width:430px;
+ margin:10px auto;background:white;
+ padding:16px;border-radius:22px;
  box-shadow:0 5px 18px #9995;
 }
-.photo{
- width:100%;
- height:270px;
- background:#f3e5f5;
- border-radius:15px;
+.picture{
+ height:270px;width:100%;
+ border-radius:18px;
  display:flex;
- align-items:center;
  justify-content:center;
+ align-items:center;
+ background:linear-gradient(135deg,#fff9c4,#f8bbd0);
+ border:3px solid white;
  overflow:hidden;
 }
-.photo img{
- width:100%;
- height:100%;
- object-fit:cover;
-}
-.fallback{font-size:110px}
-h2{color:#673ab7;font-size:29px;margin:15px 0 5px}
+.picture svg{width:100%;height:100%}
+h2{font-size:30px;color:#673ab7;margin:14px 0 5px}
 h3{font-size:22px;margin:5px}
-.counter{color:#777;margin:10px}
+.counter{color:#777;margin:12px}
 .controls{
- display:flex;
- justify-content:center;
- flex-wrap:wrap;
- gap:10px;
- margin:18px 0;
+ display:flex;justify-content:center;
+ flex-wrap:wrap;gap:10px;margin:14px 0;
 }
 .controls button{background:#673ab7;color:white}
-.controls .speak{background:#009688}
+.controls .voice{background:#009688}
 .controls .random{background:#ff9800}
 footer{padding:20px;color:#666}
 </style>
 </head>
 
 <body>
-
 <header>
 <h1>🌈 बच्चों की दुनिया 🌈</h1>
 <p>Learn With Fun • खेल-खेल में सीखें</p>
 </header>
 
 <div class="categories">
-<button class="cat active" onclick="changeCategory('Animals',this)">🐘 Animals</button>
-<button class="cat" onclick="changeCategory('Birds',this)">🦜 Birds</button>
-<button class="cat" onclick="changeCategory('Insects',this)">🦋 Insects</button>
-<button class="cat" onclick="changeCategory('Flowers',this)">🌸 Flowers</button>
+<button class="cat active" onclick="change('Animals',this)">🐘 Animals</button>
+<button class="cat" onclick="change('Birds',this)">🦜 Birds</button>
+<button class="cat" onclick="change('Insects',this)">🦋 Insects</button>
+<button class="cat" onclick="change('Flowers',this)">🌸 Flowers</button>
 </div>
 
 <div class="card">
-<div class="photo" id="photo">
-<div class="fallback">🐘</div>
-</div>
-
-<h2 id="hindi">हाथी</h2>
-<h3 id="english">Elephant</h3>
-<div class="counter" id="counter">1 / 10</div>
+<div class="picture" id="picture"></div>
+<h2 id="hindi"></h2>
+<h3 id="english"></h3>
+<div class="counter" id="counter"></div>
 
 <div class="controls">
 <button onclick="previous()">⬅ Previous</button>
-<button class="speak" onclick="speak()">🔊 सुनें</button>
+<button class="voice" onclick="speak()">🔊 सुनें</button>
 <button onclick="next()">Next ➡</button>
 </div>
 <div class="controls">
-<button class="random" onclick="randomCard()">🎲 Random</button>
+<button class="random" onclick="randomItem()">🎲 Random</button>
 </div>
 </div>
 
-<footer>⭐ बच्चों की दुनिया – Learn Something New Every Day ⭐</footer>
+<footer>⭐ Learn Something New Every Day ⭐</footer>
 
 <script>
 const data={
 Animals:[
-["हाथी","Elephant","elephant","🐘"],
-["शेर","Lion","lion","🦁"],
-["बाघ","Tiger","tiger","🐅"],
-["बंदर","Monkey","monkey","🐒"],
-["हिरण","Deer","deer","🦌"],
-["जिराफ","Giraffe","giraffe","🦒"],
-["ज़ेब्रा","Zebra","zebra","🦓"],
-["खरगोश","Rabbit","rabbit","🐇"],
-["कुत्ता","Dog","dog","🐕"],
-["बिल्ली","Cat","cat","🐈"]
+["हाथी","Elephant","🐘"],["शेर","Lion","🦁"],
+["बाघ","Tiger","🐅"],["बंदर","Monkey","🐒"],
+["हिरण","Deer","🦌"],["जिराफ","Giraffe","🦒"],
+["ज़ेब्रा","Zebra","🦓"],["खरगोश","Rabbit","🐇"],
+["कुत्ता","Dog","🐕"],["बिल्ली","Cat","🐈"]
 ],
 Birds:[
-["तोता","Parrot","parrot","🦜"],
-["मोर","Peacock","peacock","🦚"],
-["कबूतर","Pigeon","pigeon","🕊️"],
-["गौरैया","Sparrow","sparrow","🐦"],
-["उल्लू","Owl","owl","🦉"],
-["बतख","Duck","duck","🦆"],
-["मुर्गी","Hen","hen","🐔"],
-["हंस","Swan","swan","🦢"],
-["कौआ","Crow","crow","🐦‍⬛"],
-["ईगल","Eagle","eagle","🦅"]
+["तोता","Parrot","🦜"],["मोर","Peacock","🦚"],
+["कबूतर","Pigeon","🕊️"],["गौरैया","Sparrow","🐦"],
+["उल्लू","Owl","🦉"],["बतख","Duck","🦆"],
+["मुर्गी","Hen","🐔"],["हंस","Swan","🦢"],
+["कौआ","Crow","🐦‍⬛"],["ईगल","Eagle","🦅"]
 ],
 Insects:[
-["तितली","Butterfly","butterfly","🦋"],
-["मधुमक्खी","Honeybee","honeybee","🐝"],
-["चींटी","Ant","ant","🐜"],
-["लेडीबर्ड","Ladybird","ladybug","🐞"],
-["टिड्डा","Grasshopper","grasshopper","🦗"],
-["मच्छर","Mosquito","mosquito","🦟"],
-["मक्खी","Housefly","housefly","🪰"],
-["ड्रैगनफ्लाई","Dragonfly","dragonfly","🪲"],
-["इल्ली","Caterpillar","caterpillar","🐛"],
-["भृंग","Beetle","beetle","🪲"]
+["तितली","Butterfly","🦋"],["मधुमक्खी","Honeybee","🐝"],
+["चींटी","Ant","🐜"],["लेडीबर्ड","Ladybird","🐞"],
+["टिड्डा","Grasshopper","🦗"],["मच्छर","Mosquito","🦟"],
+["मक्खी","Housefly","🪰"],["ड्रैगनफ्लाई","Dragonfly","🪲"],
+["इल्ली","Caterpillar","🐛"],["भृंग","Beetle","🪲"]
 ],
 Flowers:[
-["गुलाब","Rose","rose","🌹"],
-["कमल","Lotus","lotus flower","🪷"],
-["सूरजमुखी","Sunflower","sunflower","🌻"],
-["गेंदा","Marigold","marigold","🌼"],
-["गुड़हल","Hibiscus","hibiscus flower","🌺"],
-["चमेली","Jasmine","jasmine flower","🌼"],
-["गुलदाउदी","Chrysanthemum","chrysanthemum","🌼"],
-["ट्यूलिप","Tulip","tulip flower","🌷"],
-["लैवेंडर","Lavender","lavender flower","💜"],
-["ऑर्किड","Orchid","orchid flower","🌸"]
+["गुलाब","Rose","🌹"],["कमल","Lotus","🪷"],
+["सूरजमुखी","Sunflower","🌻"],["गेंदा","Marigold","🌼"],
+["गुड़हल","Hibiscus","🌺"],["चमेली","Jasmine","🌼"],
+["गुलदाउदी","Chrysanthemum","💐"],["ट्यूलिप","Tulip","🌷"],
+["लैवेंडर","Lavender","💜"],["ऑर्किड","Orchid","🌸"]
 ]
 };
 
 let category="Animals";
 let index=0;
-let failed={};
 
 function show(){
- const item=data[category][index];
+ let item=data[category][index];
  document.getElementById("hindi").textContent=item[0];
  document.getElementById("english").textContent=item[1];
  document.getElementById("counter").textContent=
- (index+1)+" / "+data[category].length;
+ "Picture "+(index+1)+" of "+data[category].length;
 
- const photo=document.getElementById("photo");
- photo.innerHTML='<div class="fallback">'+item[3]+'</div>';
+ let colors=["#fff3e0","#e1f5fe","#f3e5f5","#e8f5e9"];
+ let color=colors[index%4];
 
- if(!failed[category+index]){
-  const img=document.createElement("img");
-  img.alt=item[1];
-  img.loading="eager";
-  img.src="https://loremflickr.com/640/420/"+ 
-    encodeURIComponent(item[2])+"?lock="+
-    (Object.keys(data).indexOf(category)*10+index+1);
-
-  img.onload=()=>{photo.innerHTML="";photo.appendChild(img)};
-  img.onerror=()=>{failed[category+index]=true};
- }
+ document.getElementById("picture").innerHTML=`
+ <svg xmlns="http://www.w3.org/2000/svg"
+ viewBox="0 0 400 270">
+ <rect width="400" height="270" rx="20" fill="${color}"/>
+ <circle cx="200" cy="130" r="100" fill="#ffffff" opacity=".65"/>
+ <text x="200" y="175" text-anchor="middle"
+ font-size="135">${item[2]}</text>
+ <text x="200" y="245" text-anchor="middle"
+ font-size="17" fill="#673ab7"
+ font-weight="bold">${item[1]}</text>
+ </svg>`;
 }
 
-function changeCategory(name,button){
- category=name;
- index=0;
- document.querySelectorAll(".cat").forEach(b=>b.classList.remove("active"));
- button.classList.add("active");
+function change(name,btn){
+ category=name;index=0;
+ document.querySelectorAll(".cat").forEach(
+ b=>b.classList.remove("active"));
+ btn.classList.add("active");
+ speechSynthesis.cancel();
  show();
 }
-
 function next(){
  index=(index+1)%data[category].length;
- show();
+ speechSynthesis.cancel();show();
 }
 function previous(){
  index=(index-1+data[category].length)%data[category].length;
- show();
+ speechSynthesis.cancel();show();
 }
-function randomCard(){
+function randomItem(){
  index=Math.floor(Math.random()*data[category].length);
- show();
+ speechSynthesis.cancel();show();
 }
 function speak(){
- const item=data[category][index];
- if(!("speechSynthesis" in window)){
-  alert("Voice सुविधा इस ब्राउज़र में उपलब्ध नहीं है।");
-  return;
- }
  speechSynthesis.cancel();
- const hindi=new SpeechSynthesisUtterance(item[0]);
- hindi.lang="hi-IN";
- hindi.rate=0.85;
- const english=new SpeechSynthesisUtterance(item[1]);
- english.lang="en-IN";
- english.rate=0.85;
- speechSynthesis.speak(hindi);
- speechSynthesis.speak(english);
+ let item=data[category][index];
+ let a=new SpeechSynthesisUtterance(item[0]);
+ a.lang="hi-IN";a.rate=.85;
+ let b=new SpeechSynthesisUtterance(item[1]);
+ b.lang="en-IN";b.rate=.85;
+ speechSynthesis.speak(a);
+ speechSynthesis.speak(b);
 }
-
 show();
 </script>
 </body>
