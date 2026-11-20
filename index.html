@@ -109,20 +109,73 @@
       margin-bottom: 10px;
       font-weight: 700;
     }
-    .photo-box {
+
+    /* Pure HTML/CSS Visual Stage - Never blocked by image/data-URI filters */
+    .visual-stage {
       width: 100%;
-      aspect-ratio: 4 / 3;
+      min-height: 230px;
       border-radius: 18px;
-      overflow: hidden;
-      background: #fef3c7;
+      padding: 20px 16px;
       margin-bottom: 14px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      border: 2px solid rgba(15, 23, 42, 0.08);
     }
-    .photo-box img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
+    .stage-animals { background: linear-gradient(135deg, #fef3c7, #fde68a); }
+    .stage-birds { background: linear-gradient(135deg, #e0f2fe, #bae6fd); }
+    .stage-insects { background: linear-gradient(135deg, #dcfce7, #bbf7d0); }
+    .stage-flowers { background: linear-gradient(135deg, #fce7f3, #fbcfe8); }
+
+    .cat-pill {
+      display: inline-block;
+      padding: 5px 14px;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 800;
+      color: #ffffff;
+      background: #ea580c;
+      margin-bottom: 12px;
+      letter-spacing: 0.4px;
     }
+    .stage-birds .cat-pill { background: #0284c7; }
+    .stage-insects .cat-pill { background: #16a34a; }
+    .stage-flowers .cat-pill { background: #db2777; }
+
+    .visual-circle {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.88);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
+      padding: 10px;
+    }
+    .vis-en {
+      font-size: 1.45rem;
+      font-weight: 800;
+      color: #0f172a;
+      line-height: 1.15;
+    }
+    .vis-hi {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #334155;
+      margin-top: 6px;
+      line-height: 1.2;
+    }
+    .vis-sub {
+      margin-top: 12px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #475569;
+    }
+
     .question-box {
       text-align: center;
       background: #fffbeb;
@@ -309,41 +362,6 @@
       { category: "Flowers", hindiName: "ऑर्किड", engName: "Orchid" }
     ];
 
-    function escapeXml(str) {
-      return String(str)
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;");
-    }
-
-    function buildAutoImage(item) {
-      var themes = {
-        "Animals": { bg1: "#fef3c7", bg2: "#fde68a", badge: "#d97706", tag: "ANIMAL • जानवर" },
-        "Common Birds": { bg1: "#e0f2fe", bg2: "#bae6fd", badge: "#0284c7", tag: "BIRD • पक्षी" },
-        "Insects": { bg1: "#dcfce7", bg2: "#bbf7d0", badge: "#16a34a", tag: "INSECT • कीड़ा" },
-        "Flowers": { bg1: "#fce7f3", bg2: "#fbcfe8", badge: "#db2777", tag: "FLOWER • फूल" }
-      };
-      var th = themes[item.category] || themes["Animals"];
-      var svg =
-        '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">' +
-          '<defs>' +
-            '<linearGradient id="g" x1="0" y1="0" x2="1" y2="1">' +
-              '<stop offset="0%" stop-color="' + th.bg1 + '"/>' +
-              '<stop offset="100%" stop-color="' + th.bg2 + '"/>' +
-            '</linearGradient>' +
-          '</defs>' +
-          '<rect width="800" height="600" fill="url(#g)"/>' +
-          '<circle cx="400" cy="285" r="185" fill="rgba(255,255,255,0.75)"/>' +
-          '<rect x="235" y="42" width="330" height="46" rx="23" fill="' + th.badge + '"/>' +
-          '<text x="400" y="72" text-anchor="middle" fill="#ffffff" font-family="sans-serif" font-size="22" font-weight="bold">' + escapeXml(th.tag) + '</text>' +
-          '<text x="400" y="268" text-anchor="middle" fill="#0f172a" font-family="sans-serif" font-size="56" font-weight="bold">' + escapeXml(item.engName) + '</text>' +
-          '<text x="400" y="335" text-anchor="middle" fill="#334155" font-family="sans-serif" font-size="44" font-weight="bold">' + escapeXml(item.hindiName) + '</text>' +
-          '<text x="400" y="525" text-anchor="middle" fill="#475569" font-family="sans-serif" font-size="22">बच्चों यह क्या है? • What is this?</text>' +
-        '</svg>';
-      return "data:image/svg+xml;charset=UTF-8," + encodeURIComponent(svg);
-    }
-
     var categories = ["All", "Animals", "Common Birds", "Insects", "Flowers"];
     var catLabels = {
       "All": "सभी (40) • All",
@@ -448,18 +466,29 @@
       askQuestionVoice();
     }
 
+    function getStageClass(category) {
+      if (category === "Common Birds") return "stage-birds";
+      if (category === "Insects") return "stage-insects";
+      if (category === "Flowers") return "stage-flowers";
+      return "stage-animals";
+    }
+
     function renderCard() {
       var list = getFilteredItems();
       var item = list[index] || items[0];
-      if (!item.autoImg) {
-        item.autoImg = buildAutoImage(item);
-      }
       var container = document.getElementById("cardContainer");
       if (!container) return;
 
       container.innerHTML =
         '<div class="counter">' + catLabels[item.category] + " • " + (index + 1) + " / " + list.length + "</div>" +
-        '<div class="photo-box"><img src="' + item.autoImg + '" alt="' + item.engName + '" /></div>' +
+        '<div class="visual-stage ' + getStageClass(item.category) + '">' +
+          '<div class="cat-pill">' + catLabels[item.category] + "</div>" +
+          '<div class="visual-circle">' +
+            '<div class="vis-en">' + item.engName + "</div>" +
+            '<div class="vis-hi">' + item.hindiName + "</div>" +
+          "</div>" +
+          '<div class="vis-sub">जवाब देखने के लिए नीचे हिंदी या English बटन दबाएं</div>' +
+        "</div>" +
         '<div class="question-box">' +
           '<div class="q-hindi">बच्चों यह क्या है?</div>' +
           '<div class="q-eng">What is this?</div>' +
